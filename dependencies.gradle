@@ -1,4 +1,6 @@
 dependencies {
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.core:core-ktx:${versions.coreKtx}"
+    implementation "androidx.legacy:legacy-support-v4:${versions.supportLegacy}"
+    kapt "com.android.databinding:compiler:${versions.databinding}"
 }

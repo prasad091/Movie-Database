@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.prasad.moviedb.R
+import com.prasad.moviedb.databinding.DiscoverFragmentBinding
 
 class DiscoverFragment : Fragment() {
 
@@ -16,12 +17,13 @@ class DiscoverFragment : Fragment() {
     }
 
     private lateinit var viewModel: DiscoverViewModel
-
+    private lateinit var binding: DiscoverFragmentBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.discover_fragment, container, false)
+        binding = DiscoverFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

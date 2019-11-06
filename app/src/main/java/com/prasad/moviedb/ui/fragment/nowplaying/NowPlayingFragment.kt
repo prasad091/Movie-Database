@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.prasad.moviedb.R
+import com.prasad.moviedb.databinding.NowPlayingFragmentBinding
+
 
 class NowPlayingFragment : Fragment() {
 
@@ -16,12 +18,13 @@ class NowPlayingFragment : Fragment() {
     }
 
     private lateinit var viewModel: NowPlayingViewModel
-
+    private lateinit var binding: NowPlayingFragmentBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.now_playing_fragment, container, false)
+        binding = NowPlayingFragmentBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.prasad.moviedb.R
+import com.prasad.moviedb.databinding.UpcomingFragmentBinding
 
 class UpcomingFragment : Fragment() {
 
@@ -16,12 +17,13 @@ class UpcomingFragment : Fragment() {
     }
 
     private lateinit var viewModel: UpcomingViewModel
-
+    private lateinit var binding: UpcomingFragmentBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.upcoming_fragment, container, false)
+        binding = UpcomingFragmentBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
