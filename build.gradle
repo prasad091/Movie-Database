@@ -20,6 +20,8 @@ buildscript {
             'constraint'         : '1.1.3',
             'navfrag'            : '2.1.0',
             'navui'              : '2.1.0',
+            'lifecycleExt'       : '2.1.0',
+            'lifecycleViewModel' : '2.1.0',
     ]
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.1'
