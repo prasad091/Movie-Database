@@ -4,6 +4,7 @@ Movie Database is the android application to display the latest movie details.
 
 👍 Comments and new issues created are welcomed.
 
+[![CircleCI](https://circleci.com/gh/prasad091/Movie-Database/tree/master.svg?style=svg)](https://circleci.com/gh/prasad091/Movie-Database/tree/master)
 
 # Background
 In this project I used Jetpack components
