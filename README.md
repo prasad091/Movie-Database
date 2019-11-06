@@ -4,7 +4,7 @@ Movie Database is the android application to display the latest movie details.
 
 👍 Comments and new issues created are welcomed.
 
-[![CircleCI](https://circleci.com/gh/prasad091/Movie-Database/tree/master.svg?style=svg)](https://circleci.com/gh/prasad091/Movie-Database/tree/master)
+[![CircleCI](https://circleci.com/gh/prasad091/Movie-Database/tree/master.svg?style=svg)](https://circleci.com/gh/prasad091/Movie-Database/tree/master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8f2d12f0110e404aa7c2f6e0fe834a90)](https://www.codacy.com/manual/prasad091/Movie-Database?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prasad091/Movie-Database&amp;utm_campaign=Badge_Grade)
 
 # Background
 In this project I used Jetpack components
