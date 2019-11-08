@@ -3,4 +3,15 @@ dependencies {
     implementation "androidx.core:core-ktx:${versions.coreKtx}"
     implementation "androidx.legacy:legacy-support-v4:${versions.supportLegacy}"
     kapt "com.android.databinding:compiler:${versions.databinding}"
+
+    // Dagger
+    kapt "com.google.dagger:dagger-compiler:${versions.daggerVersion}"
+    kapt "com.google.dagger:dagger-android-processor:${versions.daggerVersion}"
+    implementation "com.google.dagger:dagger:${versions.daggerVersion}"
+    implementation "com.google.dagger:dagger-android:${versions.daggerVersion}"
+    implementation "com.google.dagger:dagger-android-support:${versions.daggerVersion}"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
 }
