@@ -42,5 +42,8 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:${versions.navfrag}"
     implementation "androidx.navigation:navigation-ui-ktx:${versions.navui}"
     implementation "androidx.lifecycle:lifecycle-extensions:${versions.lifecycleExt}"
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    kapt "androidx.lifecycle:lifecycle-compiler:${versions.lifecycleExt}"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycleViewModel}"
+
 }
