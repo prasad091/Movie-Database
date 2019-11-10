@@ -24,7 +24,7 @@ class DatabaseModule {
  * */
     @Provides
     @Singleton
-    fun provideAllPokeDao(appDatabase: MovieDatabase): DiscoverDao {
+    fun provideAllDiscoverDao(appDatabase: MovieDatabase): DiscoverDao {
         return appDatabase.currentDiscoverList()
     }
 
