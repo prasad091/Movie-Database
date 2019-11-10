@@ -1,26 +1,15 @@
 package com.prasad.moviedb
 
-import android.app.Activity
-import android.app.Application
-import com.prasad.moviedb.di.module.DatabaseModule
-import com.prasad.moviedb.di.module.NetworkModule
+import com.prasad.moviedb.di.DaggerAppComponent
 import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
+import dagger.android.DaggerApplication
 import dagger.android.HasAndroidInjector
-import javax.inject.Inject
 
-class MainApplication: Application(), HasAndroidInjector {
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
-    override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector
-
+class MainApplication: DaggerApplication(), HasAndroidInjector {
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerAppComponent.builder().application(this).build()
+    }
     override fun onCreate() {
         super.onCreate()
-/*        DaggerApplicationComponent.builder()
-            .application(this)
-            .databaseModule(DatabaseModule())
-            .networkModule(NetworkModule())
-            .build()
-            .inject(this)*/
     }
 }
