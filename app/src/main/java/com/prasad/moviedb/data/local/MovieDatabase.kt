@@ -7,5 +7,5 @@ import com.prasad.moviedb.data.local.enitity.DiscoverEntity
 
 @Database(entities = [DiscoverEntity::class],exportSchema= false, version = 1)
 abstract class MovieDatabase  : RoomDatabase() {
-    abstract fun currentDiscoverList(): DiscoverDao
+    abstract fun discoverDao(): DiscoverDao
 }

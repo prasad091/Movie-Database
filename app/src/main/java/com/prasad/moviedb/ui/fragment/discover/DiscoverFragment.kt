@@ -4,32 +4,39 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import com.prasad.moviedb.base.ScopedFragment
+import com.kotlin.mvvm.boilerplate.di.ActivityScoped
 import com.prasad.moviedb.databinding.DiscoverFragmentBinding
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class DiscoverFragment : ScopedFragment() {
+@ActivityScoped
+class DiscoverFragment : DaggerFragment() {
 
-    companion object {
-        fun newInstance() = DiscoverFragment()
-    }
+
     @Inject
-    internal lateinit var discoverFactory: DiscoverFactory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: DiscoverViewModel
     private lateinit var binding: DiscoverFragmentBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DiscoverFragmentBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProviders.of(this,viewModelFactory).get(DiscoverViewModel::class.java)
+        binding = DiscoverFragmentBinding.inflate(inflater, container, false).apply {
+            this.discover = viewModel
+        }
         return binding.root
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this,this.discoverFactory).get(DiscoverViewModel::class.java)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.start()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.stop()
+    }
 }

@@ -6,6 +6,8 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.prasad.moviedb.data.local.enitity.DiscoverEntity
+import io.reactivex.Flowable
+import io.reactivex.Maybe
 
 @Dao
 interface DiscoverDao {
@@ -13,5 +15,7 @@ interface DiscoverDao {
     fun upsert(discoverEntity: DiscoverEntity)
 
     @Query("select * from discover")
-    fun getAll() : LiveData<DiscoverEntity>
+    fun getAll() : Maybe<List<DiscoverEntity>>
+
+
 }

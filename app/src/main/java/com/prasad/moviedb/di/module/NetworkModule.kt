@@ -1,18 +1,14 @@
 package com.prasad.moviedb.di.module
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.prasad.moviedb.MainApplication
-import com.prasad.moviedb.common.Constants.Companion.BASE_URL
+import android.app.Application
+import com.kotlin.mvvm.boilerplate.util.Memory
 import com.prasad.moviedb.data.remote.ApiService
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.util.concurrent.TimeUnit
@@ -21,96 +17,39 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
-    /*
-     * The method returns the Gson object
-     * */
-    @Provides
-    @Singleton
-    fun provideGson(): Gson {
-        val gsonBuilder = GsonBuilder()
-        return gsonBuilder.create()
+    companion object {
+        private const val MOVIE_URL = "http://api.themoviedb.org/3/"
     }
 
-    /*
-     * The method returns the Cache object
-     * */
-    @Provides
-    @Singleton
-    fun provideCache(application: MainApplication): Cache {
-        val cacheSize = (10 * 1024 * 1024).toLong() // 10 MB
-        val httpCacheDirectory = File(application.cacheDir, "http-cache")
-        return Cache(httpCacheDirectory, cacheSize)
-    }
-
-    @Provides
-    @Singleton
-    fun provideInterceptor(): Interceptor {
-        //build interceptor
-        return Interceptor { chain ->
-            // HttpUrl builder with api key
-            val url = chain.request()
-                .url
-                .newBuilder()
-//                .addQueryParameter("key", "if there is an apikey")
-                .build()
-
-            // request builder
-            val request = chain.request()
-                .newBuilder()
-                .url(url)
-                .build()
-
-            return@Interceptor chain.proceed(request)
-        }
-    }
-
-    /*
-     * The method returns the Okhttp object
-     * */
-    @Provides
-    @Singleton
-    fun provideOkhttpClient(cache: Cache, interceptor: Interceptor): OkHttpClient {
-        val logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.BODY
-
-        val httpClient = OkHttpClient.Builder()
-            .cache(cache)
-            .addInterceptor(logging)
-            .addInterceptor(interceptor)
-            //todo add connectivityInterceptor
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
-        return httpClient.build()
-
-
-    }
-
-    /*
-     * The method returns the Retrofit object
-     * */
-    @Provides
-    @Singleton
-    fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
-//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .baseUrl(BASE_URL)
-            .client(okHttpClient)
+    private fun buildOkHttpClient(application: Application): OkHttpClient =
+        OkHttpClient.Builder()
+         //   .addNetworkInterceptor(StethoInterceptor())
+            .connectTimeout(10L, TimeUnit.SECONDS)
+            .writeTimeout(10L, TimeUnit.SECONDS)
+            .readTimeout(30L, TimeUnit.SECONDS)
+            .cache(
+                Cache(
+                    File(application.cacheDir, "BLCache"),
+                    Memory.calcCacheSize(application, .25f)
+                )
+            )
             .build()
-    }
 
-
-
-    /*
-     * We need ApiService module.
-     * For this, We need the Retrofit object, Gson, Cache and OkHttpClient .
-     * So we will define the providers for these objects here in this module.
-     * */
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService {
-        return retrofit.create<ApiService>(ApiService::class.java)
-    }
+    fun provideOkHttpClient(application: Application): OkHttpClient = buildOkHttpClient(application)
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+        .baseUrl(MOVIE_URL)
+        .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .build()
+
+    @Provides
+    @Singleton
+    fun provideDiscoverMoviesService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 
 }

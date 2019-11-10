@@ -1,19 +1,25 @@
 package com.prasad.moviedb.di.module
 
-import com.prasad.moviedb.data.datasource.DiscoverDataSource
-import com.prasad.moviedb.data.local.dao.DiscoverDao
-import com.prasad.moviedb.data.repository.DiscoverRepo
-import com.prasad.moviedb.data.repository.DiscoverRepoImp
+import com.kotlin.mvvm.boilerplate.di.qualifier.LocalData
+import com.kotlin.mvvm.boilerplate.di.qualifier.RemoteData
+import com.prasad.moviedb.data.local.DiscoverLocalDataSource
+import com.prasad.moviedb.data.remote.MovieRemoteDataSource
+import com.prasad.moviedb.data.repository.DiscoverDataSource
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import javax.inject.Singleton
 
-@Module(includes = [DatabaseModule::class,DataSourceModule::class])
-class RepositoryModule {
-    @Provides
+@Module
+abstract class RepositoryModule {
+
     @Singleton
-    internal fun provideRepository(discoverDao: DiscoverDao, discoverDataSource: DiscoverDataSource): DiscoverRepo{
-        return DiscoverRepoImp(discoverDao,discoverDataSource)
-    }
+    @Binds
+    @LocalData
+    abstract fun bindDiscoverLocalDataSource(discoverLocalDataSource: DiscoverLocalDataSource): DiscoverDataSource
+
+    @Singleton
+    @Binds
+    @RemoteData
+    abstract fun bindMovieRemoteDataSource(movieRemoteDataSource: MovieRemoteDataSource): DiscoverDataSource
 
 }
