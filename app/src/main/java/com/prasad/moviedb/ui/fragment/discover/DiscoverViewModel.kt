@@ -39,10 +39,10 @@ class DiscoverViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { isRefreshing.set(true) }
             .doAfterTerminate { isRefreshing.set(false) }
-            .subscribe({ news ->
+            .subscribe({ discover ->
                 with(items) {
                     clear()
-                    addAll(news)
+                    addAll(discover)
                 }
             }, { error ->
                 error.printStackTrace()
