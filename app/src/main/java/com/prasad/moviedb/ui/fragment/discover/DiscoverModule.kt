@@ -1,13 +1,13 @@
 package com.prasad.moviedb.ui.fragment.discover
 
-import com.kotlin.mvvm.boilerplate.di.FragmentScoped
+import com.kotlin.mvvm.boilerplate.di.ActivityScoped
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class DiscoverModule {
 
-    @FragmentScoped
+    @ActivityScoped
     @ContributesAndroidInjector
     abstract fun bindDiscoverFragment(): DiscoverFragment
 }

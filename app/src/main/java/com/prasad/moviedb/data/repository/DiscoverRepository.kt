@@ -3,7 +3,6 @@ package com.prasad.moviedb.data.repository
 import com.kotlin.mvvm.boilerplate.di.qualifier.LocalData
 import com.kotlin.mvvm.boilerplate.di.qualifier.RemoteData
 import com.prasad.moviedb.data.local.enitity.DiscoverEntity
-import com.prasad.moviedb.data.remote.MovieRemoteDataSource
 import io.reactivex.Flowable
 import javax.inject.Inject
 import javax.inject.Singleton
