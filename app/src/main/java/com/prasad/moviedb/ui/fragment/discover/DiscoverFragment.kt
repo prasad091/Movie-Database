@@ -11,8 +11,8 @@ import com.prasad.moviedb.databinding.DiscoverFragmentBinding
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-
-class DiscoverFragment : DaggerFragment() {
+@ActivityScoped
+class DiscoverFragment  @Inject constructor(): DaggerFragment() {
 
 
     @Inject
