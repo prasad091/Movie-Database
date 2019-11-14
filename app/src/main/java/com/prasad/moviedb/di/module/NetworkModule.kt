@@ -1,7 +1,7 @@
 package com.prasad.moviedb.di.module
 
 import android.app.Application
-import com.kotlin.mvvm.boilerplate.util.Memory
+import com.prasad.moviedb.util.Memory
 import com.prasad.moviedb.data.remote.ApiService
 import dagger.Module
 import dagger.Provides

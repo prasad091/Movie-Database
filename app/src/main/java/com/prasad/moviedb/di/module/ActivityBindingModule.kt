@@ -1,6 +1,6 @@
 package com.prasad.moviedb.di.module
 
-import com.kotlin.mvvm.boilerplate.di.ActivityScoped
+import com.prasad.moviedb.di.ActivityScoped
 import com.prasad.moviedb.ui.activity.MainActivity
 import com.prasad.moviedb.ui.fragment.discover.DiscoverModule
 import dagger.Module

@@ -3,8 +3,7 @@ package com.prasad.moviedb.ui.fragment.discover
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableList
-import androidx.lifecycle.ViewModel
-import com.kotlin.mvvm.boilerplate.util.SingleLiveEvent
+import com.prasad.moviedb.util.SingleLiveEvent
 import com.prasad.moviedb.data.local.enitity.DiscoverEntity
 import com.prasad.moviedb.data.repository.DiscoverRepository
 import com.prasad.moviedb.util.BaseViewModel

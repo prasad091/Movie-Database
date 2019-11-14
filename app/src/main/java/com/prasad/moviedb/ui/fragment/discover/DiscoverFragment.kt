@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import com.kotlin.mvvm.boilerplate.di.ActivityScoped
+import com.prasad.moviedb.di.ActivityScoped
 import com.prasad.moviedb.databinding.DiscoverFragmentBinding
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject

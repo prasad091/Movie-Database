@@ -1,10 +1,8 @@
-package com.kotlin.mvvm.boilerplate.di.qualifier
+package com.prasad.moviedb.di.qualifier
 
 import javax.inject.Qualifier
 
-/**
- * Created by cuongpm on 11/29/18.
- */
+
 
 @Qualifier
 @MustBeDocumented

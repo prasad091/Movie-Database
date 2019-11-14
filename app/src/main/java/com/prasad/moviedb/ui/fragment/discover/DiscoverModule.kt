@@ -1,6 +1,6 @@
 package com.prasad.moviedb.ui.fragment.discover
 
-import com.kotlin.mvvm.boilerplate.di.ActivityScoped
+import com.prasad.moviedb.di.ActivityScoped
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

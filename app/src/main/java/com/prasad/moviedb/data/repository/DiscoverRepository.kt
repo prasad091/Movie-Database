@@ -1,7 +1,7 @@
 package com.prasad.moviedb.data.repository
 
-import com.kotlin.mvvm.boilerplate.di.qualifier.LocalData
-import com.kotlin.mvvm.boilerplate.di.qualifier.RemoteData
+import com.prasad.moviedb.di.qualifier.LocalData
+import com.prasad.moviedb.di.qualifier.RemoteData
 import com.prasad.moviedb.data.local.enitity.DiscoverEntity
 import io.reactivex.Flowable
 import javax.inject.Inject

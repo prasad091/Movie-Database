@@ -2,8 +2,8 @@ package com.prasad.moviedb.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.kotlin.mvvm.boilerplate.di.ViewModelKey
-import com.kotlin.mvvm.boilerplate.util.ViewModelFactory
+import com.prasad.moviedb.di.ViewModelKey
+import com.prasad.moviedb.util.ViewModelFactory
 import com.prasad.moviedb.ui.fragment.discover.DiscoverViewModel
 import dagger.Binds
 import dagger.Module

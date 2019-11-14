@@ -1,10 +1,8 @@
-package com.kotlin.mvvm.boilerplate.di
+package com.prasad.moviedb.di
 
 import javax.inject.Scope
 
-/**
- * Created by cuongpm on 11/29/18.
- */
+
 
 @Scope
 @MustBeDocumented

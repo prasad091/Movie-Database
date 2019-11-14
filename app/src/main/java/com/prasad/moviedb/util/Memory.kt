@@ -1,4 +1,4 @@
-package com.kotlin.mvvm.boilerplate.util
+package com.prasad.moviedb.util
 
 import android.app.ActivityManager
 import android.content.Context

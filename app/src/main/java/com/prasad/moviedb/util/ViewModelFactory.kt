@@ -1,4 +1,4 @@
-package com.kotlin.mvvm.boilerplate.util
+package com.prasad.moviedb.util
 
 
 import androidx.lifecycle.ViewModel
