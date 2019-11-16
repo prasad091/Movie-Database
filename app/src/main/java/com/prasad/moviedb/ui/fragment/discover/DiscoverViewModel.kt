@@ -18,7 +18,7 @@ class DiscoverViewModel @Inject constructor(
 
     private val isRefreshing = ObservableBoolean(false)
     private val items: ObservableList<DiscoverEntity> = ObservableArrayList()
-    private val onNewsOpenEvent = SingleLiveEvent<DiscoverEntity>()
+    private val onDiscoverOpenEvent = SingleLiveEvent<DiscoverEntity>()
 
     private var disposable: Disposable? = null
 
@@ -30,10 +30,7 @@ class DiscoverViewModel @Inject constructor(
         disposable?.let { if (!it.isDisposed) it.dispose() }
     }
 
-
    fun getAllDiscover(isRefresh: Boolean) {
-
-
         disposable = discoverRepository.getAllDiscoverMovies()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

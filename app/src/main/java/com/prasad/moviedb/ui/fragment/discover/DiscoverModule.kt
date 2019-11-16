@@ -6,7 +6,6 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class DiscoverModule {
-
     @FragmentScoped
     @ContributesAndroidInjector
     abstract fun bindDiscoverFragment(): DiscoverFragment
