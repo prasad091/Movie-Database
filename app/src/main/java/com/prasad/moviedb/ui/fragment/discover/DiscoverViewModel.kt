@@ -31,7 +31,8 @@ class DiscoverViewModel @Inject constructor(
     }
 
 
-    private fun getAllDiscover(isRefresh: Boolean) {
+   fun getAllDiscover(isRefresh: Boolean) {
+
 
         disposable = discoverRepository.getAllDiscoverMovies()
             .subscribeOn(Schedulers.io())
