@@ -11,7 +11,7 @@ import com.prasad.moviedb.ui.fragment.discover.DiscoverViewModel
 
 
 class DiscoverAdapter(
-    private var song: List<DiscoverEntity>,
+    private var discover: List<DiscoverEntity>,
     private val discoverViewModel: DiscoverViewModel?
 ) : RecyclerView.Adapter<DiscoverAdapter.DiscoverViewHolder>() {
 
@@ -26,17 +26,16 @@ class DiscoverAdapter(
     override fun getItemViewType(position: Int): Int {
         return position
     }
-    override fun getItemCount() = song.size
+    override fun getItemCount() = discover.size
 
     override fun onBindViewHolder(holder: DiscoverViewHolder, position: Int) =
-        holder.bind(song[position], object : SongListener {
+        holder.bind(discover[position], object : SongListener {
             override fun onSongSelected(news: DiscoverEntity) {
                 discoverViewModel?.start()
             }
         })
 
     class DiscoverViewHolder(private val binding: ItemDiscoverListBinding) : RecyclerView.ViewHolder(binding.root) {
-
         fun bind(discoverEntity: DiscoverEntity, songListener: SongListener) {
             with(binding)
             {
@@ -47,8 +46,8 @@ class DiscoverAdapter(
         }
     }
 
-    fun setData(song: List<DiscoverEntity>) {
-        this.song = song
+    fun setData(discover: List<DiscoverEntity>) {
+        this.discover = discover
         notifyDataSetChanged()
     }
 }

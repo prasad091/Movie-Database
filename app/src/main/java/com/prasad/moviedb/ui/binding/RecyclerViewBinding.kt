@@ -19,7 +19,7 @@ object RecyclerViewBinding {
 
     @BindingAdapter("app:items")
     @JvmStatic
-    fun setListSong(recyclerView: RecyclerView, items: List<DiscoverEntity>) {
+    fun setListDiscover(recyclerView: RecyclerView, items: List<DiscoverEntity>) {
         with(recyclerView.adapter as DiscoverAdapter?) {
             this?.setData(items)
         }

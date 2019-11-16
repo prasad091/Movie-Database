@@ -17,7 +17,6 @@ class DiscoverRepository @Inject constructor(
         remoteDataSource.saveAllDiscoverMovies(discover)
     }
 
-
     private var cachedDiscover = listOf<DiscoverEntity>()
 
     private var cacheDiscoverIsDirty = false
@@ -49,6 +48,5 @@ class DiscoverRepository @Inject constructor(
     private fun getAndCacheLocalDiscover(): Flowable<List<DiscoverEntity>> {
         return localDataSource.getAllDiscoverMovies().doOnNext { discover -> cachedDiscover = discover }
     }
-
 
 }

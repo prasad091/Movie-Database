@@ -13,5 +13,4 @@ internal abstract class ActivityBindingModule {
     @ContributesAndroidInjector(modules = [DiscoverModule::class])
     internal abstract fun bindMainActivity(): MainActivity
 
-
 }

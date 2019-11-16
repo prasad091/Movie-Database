@@ -14,7 +14,6 @@ import javax.inject.Inject
 @ActivityScoped
 class DiscoverFragment  @Inject constructor(): DaggerFragment() {
 
-
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: DiscoverViewModel

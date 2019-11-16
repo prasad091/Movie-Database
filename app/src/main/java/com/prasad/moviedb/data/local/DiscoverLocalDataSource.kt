@@ -17,7 +17,6 @@ class DiscoverLocalDataSource @Inject constructor(
         return discoverDao.getAll().toFlowable()
     }
 
-
     override fun saveAllDiscoverMovies(discover: List<DiscoverEntity>) {
         discover.map { discoverDao.upsert(it) }
     }

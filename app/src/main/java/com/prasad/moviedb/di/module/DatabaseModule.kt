@@ -21,5 +21,4 @@ class DatabaseModule {
     @Provides
     fun provideMovieDiscoverDao(database: MovieDatabase): DiscoverDao = database.discoverDao()
 
-
 }
