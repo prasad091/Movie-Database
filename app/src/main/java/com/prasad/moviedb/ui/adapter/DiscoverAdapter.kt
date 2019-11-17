@@ -29,18 +29,18 @@ class DiscoverAdapter(
     override fun getItemCount() = discover.size
 
     override fun onBindViewHolder(holder: DiscoverViewHolder, position: Int) =
-        holder.bind(discover[position], object : SongListener {
-            override fun onSongSelected(news: DiscoverEntity) {
+        holder.bind(discover[position], object : DiscoverListener {
+            override fun onDiscoverSelected(news: DiscoverEntity) {
                 discoverViewModel?.start()
             }
         })
 
     class DiscoverViewHolder(private val binding: ItemDiscoverListBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(discoverEntity: DiscoverEntity, songListener: SongListener) {
+        fun bind(discoverEntity: DiscoverEntity, discoverListener: DiscoverListener) {
             with(binding)
             {
              /*   discover = discoverEntity
-                listener = songListener*/
+                listener = discoverListener*/
                 executePendingBindings()
             }
         }
@@ -52,6 +52,6 @@ class DiscoverAdapter(
     }
 }
 
-interface SongListener {
-    fun onSongSelected(discover: DiscoverEntity)
+interface DiscoverListener {
+    fun onDiscoverSelected(discover: DiscoverEntity)
 }
