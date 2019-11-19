@@ -23,9 +23,9 @@ class DiscoverAdapter(
 
         return DiscoverViewHolder(binding)
     }
-    override fun getItemViewType(position: Int): Int {
+/*    override fun getItemViewType(position: Int): Int {
         return position
-    }
+    }*/
     override fun getItemCount() = discover.size
 
     override fun onBindViewHolder(holder: DiscoverViewHolder, position: Int) =
