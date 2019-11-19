@@ -30,7 +30,7 @@ class DiscoverAdapter(
 
     override fun onBindViewHolder(holder: DiscoverViewHolder, position: Int) =
         holder.bind(discover[position], object : DiscoverListener {
-            override fun onDiscoverSelected(news: DiscoverEntity) {
+            override fun onDiscoverSelected(discover: DiscoverEntity) {
                 discoverViewModel?.start()
             }
         })
